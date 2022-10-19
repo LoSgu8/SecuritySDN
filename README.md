@@ -4,7 +4,7 @@
 
 **BonsaiLab@Politecnico di Milano - 2021/2022**
 
-Implementation of a Software Defined Perimeter (SDP) in Ryu manager: in order to access a service inside a network, a client must authenticate itself by sending an authentication request to the network controller. The authentication is based on a Hash-based Message Authentication Code (HMAC) computed using a pre-shared key. Sequential nonces are used in authentication requests to avoid replication. 
+Implementation of a Software Defined Perimeter (SDP) in Ryu manager: in order to access a service inside a network, a client must authenticate itself by sending an authentication request to the network controller. The authentication is based on a Hash-based Message Authentication Code (HMAC) computed using a pre-shared key. Sequential nonces are used in authentication requests to avoid replication. Once the authentication is successfull, the controller setup a connection between client and server on the shortest path.
 
 ```mermaid
 sequenceDiagram
@@ -15,12 +15,12 @@ Controller->>Client: 202 Authentication Accepted
 Client-->Server: Connection Setup
 ```
 
-The *sdnsec.ipynb* file is a draft with the code useful for the functioning of the SDP.
+The *sdnsec.ipynb* notebook is just a draft containing the code used for the SDP authentication part.
 
 ## Before running
 
-Run create_conf.py at client (in \~/ folder) and controller side (\~/ryu/ryu/app/ folder
-Currently, the project is setup with the following parameters must be set:
+Run create_conf.py at client (in \~/ folder) and controller side (\~/ryu/ryu/app/ folder).
+The following parameters can be set:
 
 - In *sec_controller.py*:
   - *self.flows_expire_in* (default = 30): expiration time (idle_timer) in seconds of the flows entries installed through authentication
